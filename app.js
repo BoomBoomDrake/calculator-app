@@ -18,8 +18,8 @@ function divide(a, b) {
 }
 
 function operate(a, b, sign) {
-    return sign === '+' ? a + b
-        : sign === '-' ? a - b
-        : sign === '*' ? a * b
-        : a / b;
+    return sign === '+' ? add(a, b)
+        : sign === '-' ? subtract(a, b)
+        : sign === '*' ? multiply(a, b)
+        : divide(a, b);
 }
