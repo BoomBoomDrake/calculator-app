@@ -1,0 +1,1 @@
+const calcBody = document.querySelector('.calcBody');
