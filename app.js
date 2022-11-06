@@ -41,8 +41,12 @@ function displayCurrent(btn) {
     currentNumber.textContent += btn.textContent;
 }
 
-function backSpace(btn) {
+function backSpace() {
     displayValue = currentNumber.textContent.slice(0, (displayValue.length - 1))
+}
+
+function clear() {
+    displayValue = "";
 }
     // To-do: 
     
