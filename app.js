@@ -1,4 +1,13 @@
-const calcBody = document.querySelector('.calcBody');
+const calcBody = document.getElementById('calcBody');
+const currentNumber = document.getElementById("currentNumber");
+let displayValue = '';
+currentNumber.textContent = displayValue;
+const equationPreview = document.getElementById("equationPreview");
+const clrBtn = document.getElementById("clr");
+const delBtn = document.getElementById("del");
+
+clrBtn.addEventListener("click", clear());
+delBtn.addEventListener("click", backSpace());
 
 // Operator functions:
 function add(a, b) {
@@ -32,6 +41,9 @@ function displayCurrent(btn) {
     currentNumber.textContent += btn.textContent;
 }
 
+function backSpace(btn) {
+    displayValue = currentNumber.textContent.slice(0, (displayValue.length - 1))
+}
     // To-do: 
-    // Delete/backspace function
+    
     // Clear function
