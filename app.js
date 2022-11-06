@@ -23,3 +23,15 @@ function operate(a, b, sign) {
         : sign === '*' ? multiply(a, b)
         : divide(a, b);
 }
+
+// Display functions:
+function displayCurrent(btn) {
+    if (btn.className == 'opBtn') {
+        equationPreview.textContent = `${currentNumber.textContent} ${btn.textContent}`;
+        currentNumber.textContent = '';
+    } else if (btn.textContent === '.' && currentNumber.textContent.includes('.')) {
+        return
+    } else {
+        currentNumber.textContent += btn.textContent;
+    }
+}
