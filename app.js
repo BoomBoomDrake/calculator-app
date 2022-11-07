@@ -1,13 +1,13 @@
 const calcBody = document.getElementById('calcBody');
 const currentNumber = document.getElementById("currentNumber");
-let displayValue = '';
-currentNumber.textContent = displayValue;
 const equationPreview = document.getElementById("equationPreview");
 const clrBtn = document.getElementById("clr");
 const delBtn = document.getElementById("del");
+clrBtn.addEventListener("click", clear);
+delBtn.addEventListener("click", backSpace);
 
-clrBtn.addEventListener("click", clear());
-delBtn.addEventListener("click", backSpace());
+const numbers = document.querySelectorAll(".numBtn");
+numbers.forEach((btn) => btn.addEventListener("click", () => displayCurrent(btn.textContent)));
 
 // Operator functions:
 function add(a, b) {
@@ -34,20 +34,25 @@ function operate(a, b, sign) {
 }
 
 // Display functions:
-function displayCurrent(btn) {
-    if (btn.textContent === '.' && currentNumber.textContent.includes('.')) {
-        return
-    } 
-    currentNumber.textContent += btn.textContent;
+function displayCurrent(number) {
+    currentNumber.textContent += number;
+}
+
+function displayPoint(point) {
+    if (currentNumber.textContent = '') {
+        currentNumber.textContent = '0';
+    }
+    if (currentNumber.textContent.includes('.')) return
+    currentNumber.textContent += point;
 }
 
 function backSpace() {
-    displayValue = currentNumber.textContent.slice(0, (displayValue.length - 1))
+    currentNumber.textContent = currentNumber.textContent
+        .toString()
+        .slice(0, -1);
 }
 
 function clear() {
-    displayValue = "";
+    equationPreview.textContent = "";
+    currentNumber.textContent = "";
 }
-    // To-do: 
-    
-    // Clear function
