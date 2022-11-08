@@ -4,6 +4,9 @@
 
 body {
     background-color: antiquewhite;
+    background: url(./src/disco-ball-gif-17.gif);
+    background-repeat: no-repeat;
+    background-position: top left;
 }
 
 @font-face {
