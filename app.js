@@ -19,7 +19,7 @@ numbers.forEach((btn) => btn.addEventListener("click", () => displayCurrent(btn.
 operators.forEach((btn) => btn.addEventListener("click", () => operate(btn.textContent)))
 
 // Handle keypress events
-window.addEventListener("keypress", handleKeyEvent);
+window.addEventListener("keydown", handleKeyEvent);
 
 // Operator functions:
 function add(a, b) {
@@ -35,12 +35,15 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return a / b;
+    if (b == '0') {
+        alert('You cannot divide by zero!');
+        clear();
+    } else return a / b;
 }
 
 function operate(operator) {
     if (equationPreview.textContent == '') {
-        if (resetReady && operator == '=') return
+        if (operator == '=') return
 
         resetReady = false;
         equationPreview.textContent = `${currentNumber.textContent} ${operator}`
@@ -110,7 +113,7 @@ function clear() {
 }
 
 function handleKeyEvent(e) {
-    console.log(e.key)
+    console.log(e.key);
     let nums = new RegExp('^[0-9]$');
     let ops = ['+', "-", "/", "*", "Enter", "="];
     if (nums.test(e.key)) {
@@ -123,7 +126,11 @@ function handleKeyEvent(e) {
         }
     } else if (e.key == '.') {
         displayPoint();
-    } else return
+    } else if (e.key == 'Backspace') {
+        backSpace();
+    } else if (e.key == 'Escape') {
+        clear();
+    } 
 }
 
 function convertOperator(key) {
