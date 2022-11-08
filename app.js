@@ -92,9 +92,13 @@ function displayPoint() {
 }
 
 function backSpace() {
-    currentNumber.textContent = currentNumber.textContent
+    if (currentNumber.textContent.length == 1) {
+        currentNumber.textContent = "0";
+    } else {
+        currentNumber.textContent = currentNumber.textContent
         .toString()
         .slice(0, -1);
+    }
 }
 
 function clear() {
