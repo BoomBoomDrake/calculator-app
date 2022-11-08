@@ -18,6 +18,9 @@ point.addEventListener("click", displayPoint);
 numbers.forEach((btn) => btn.addEventListener("click", () => displayCurrent(btn.textContent)));
 operators.forEach((btn) => btn.addEventListener("click", () => operate(btn.textContent)))
 
+// Handle keypress events
+window.addEventListener("keypress", handleKeyEvent);
+
 // Operator functions:
 function add(a, b) {
     return a + b;
@@ -104,4 +107,27 @@ function backSpace() {
 function clear() {
     equationPreview.textContent = "";
     currentNumber.textContent = "0";
+}
+
+function handleKeyEvent(e) {
+    console.log(e.key)
+    let nums = new RegExp('^[0-9]$');
+    let ops = ['+', "-", "/", "*", "Enter", "="];
+    if (nums.test(e.key)) {
+        displayCurrent(e.key);
+    } else if (ops.includes(e.key)) {
+        if (e.key == '=' || e.key == "Enter") {
+            operate('=');
+        } else {
+            operate(convertOperator(e.key));
+        }
+    } else if (e.key == '.') {
+        displayPoint();
+    } else return
+}
+
+function convertOperator(key) {
+    if (key == '+' || key == "-") {
+        return key;
+    } else return key == '*' ? "x" : '÷';
 }
