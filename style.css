@@ -6,7 +6,6 @@ body {
     background-color: antiquewhite;
 }
 
-
 #calcBody {
     margin: 50px auto auto;
     padding: 20px;
@@ -32,6 +31,11 @@ body {
 
 .displayCont p {
     height: 18px;
+    font-size: x-large;
+}
+
+.displayCont h1 {
+    font-size: xx-large;
 }
 
 .funcBtnCont {
